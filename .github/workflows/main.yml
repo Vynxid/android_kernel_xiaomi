@@ -12,7 +12,7 @@ jobs:
 
       - name: Ganti LOCAL_DIR di build.sh
         run: |
-          sed -i "s|^LOCAL_DIR=.*|LOCAL_DIR=\"$(pwd)/local\"|g" dynamic/build.sh
+          sed -i "s|^LOCAL_DIR=.*|LOCAL_DIR=\"$(pwd)/local\"|g" build.sh
           mkdir -p local/toolchain
 
       - name: Make build.sh executable
