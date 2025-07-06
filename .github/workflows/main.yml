@@ -10,15 +10,19 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Give permission to build.sh
+      - name: Ganti LOCAL_DIR di build.sh
+        run: |
+          sed -i "s|^LOCAL_DIR=.*|LOCAL_DIR=\"$(pwd)/local\"|g" dynamic/build.sh
+          mkdir -p local/toolchain
+
+      - name: Make build.sh executable
         run: chmod +x build.sh
 
-      - name: Run build.sh
+      - name: Jalankan build.sh
         run: ./build.sh
 
-      - name: Upload zip as artifact
+      - name: Upload zip artifact
         uses: actions/upload-artifact@v4
         with:
           name: kernel-zip
           path: ./*.zip
-          
