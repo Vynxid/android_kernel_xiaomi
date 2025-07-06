@@ -8,10 +8,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       - name: Give permission to build.sh
-        run: chmod +x dynamic/build.sh
+        run: chmod +x build.sh
 
       - name: Run build.sh
         run: ./build.sh
