@@ -15,6 +15,10 @@ jobs:
           sed -i "s|^LOCAL_DIR=.*|LOCAL_DIR=\"$(pwd)/local\"|g" build.sh
           mkdir -p local/toolchain
 
+      - name: Perbaiki fs.h jika rusak
+        run: |
+          sed -i 's/compat_ptr_ioctl.*$/extern long compat_ptr_ioctl(struct file *file, unsigned int cmd, unsigned long arg);/' include/linux/fs.h
+
       - name: Make build.sh executable
         run: chmod +x build.sh
 
